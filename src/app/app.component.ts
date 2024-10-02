@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { UserComponentComponent } from "./user-component/user-component.component";
+import { DUMMY_USERS } from './dummydata';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { UserComponentComponent } from "./user-component/user-component.componen
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+  users = DUMMY_USERS;
+
   constructor() {  }
 
 }

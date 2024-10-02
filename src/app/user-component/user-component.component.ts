@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, Input, signal } from '@angular/core';
 import {DUMMY_USERS} from "../dummydata";
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -12,6 +12,8 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 
 export class UserComponentComponent {
+  /**
+   * Signals and for dummy one image
   // //just get the random index from the array
   // selectedUsers = DUMMY_USERS[randomIndex];
   // //using signals
@@ -28,15 +30,29 @@ export class UserComponentComponent {
   //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
   // }
 
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
+  // selectedUser = signal(DUMMY_USERS[randomIndex]);
 
-  // Computed property to get the image path
-  imagePath = computed(() => this.selectedUser().avatar);
+  // // Computed property to get the image path
+  // imagePath = computed(() => this.selectedUser().avatar);
 
-  // Method to randomly select a new user
-  selectRandomUser() {
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
+  // // Method to randomly select a new user
+  // selectRandomUser() {
+  //   const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+  //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
+  // } 
+  */
+
+//to bind a child property into the parent component
+//  @Input({ required: true }) id!: string;
+ @Input({ required: true }) avatar!: string;
+ @Input({ required: true }) name!: string;
+
+  get imagePath() {
+    return this.avatar;
+  }
+
+  onSelectUsers() {
+
   }
 
 }
