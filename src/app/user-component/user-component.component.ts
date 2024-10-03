@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
 import {DUMMY_USERS} from "../dummydata";
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -43,16 +43,18 @@ export class UserComponentComponent {
   */
 
 //to bind a child property into the parent component
-//  @Input({ required: true }) id!: string;
+ @Input({ required: true }) id!: string;
  @Input({ required: true }) avatar!: string;
  @Input({ required: true }) name!: string;
+ @Output() selectedUser = new EventEmitter<string>();
 
+  //getter method to get the Image
   get imagePath() {
     return this.avatar;
   }
 
   onSelectUsers() {
-
+    this.selectedUser.emit(this.id);
   }
 
 }

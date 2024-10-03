@@ -3,8 +3,13 @@
 <main>
     <ul id="users">
         <li *ngFor="let user of users">
-            <app-user-component [avatar]="user.avatar" 
-              [name]="user.name" />
+            <app-user-component 
+              [avatar]="user.avatar" 
+              [name]="user.name"
+              [id]="user.id"
+              (selectedUser)="onSelectUser($event)" />
         </li>
     </ul>
+    <app-new-task [nameValue]="selectedUser? selectedUser.name : '' "/>
 </main>
+
