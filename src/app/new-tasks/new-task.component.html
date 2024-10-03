@@ -1,0 +1,15 @@
+<section id="tasks">
+    <header>
+        <h2>{{nameValue}}'s tasks</h2>
+        <menu>
+            <button>Add Task</button>
+        </menu> 
+    </header>
+    <ul>
+        @for (tasksItem of tasksArr; track tasksItem.id) {
+            <li>
+                <app-new-task [tasksList]="tasksItem"/>
+            </li>
+        }
+    </ul>
+</section>

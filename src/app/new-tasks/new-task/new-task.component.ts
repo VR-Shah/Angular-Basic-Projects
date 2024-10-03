@@ -1,5 +1,13 @@
 import { Component, Input } from '@angular/core';
 
+interface ITask {
+  id:any;
+  title:string;
+  date:string;
+  description:string;
+  userId:string
+}
+
 @Component({
   selector: 'app-new-task',
   standalone: true,
@@ -8,9 +16,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-
+  
   constructor() {}
-
-  @Input({required: true}) nameValue!: string;
+  
+  @Input({required: true}) tasksList!:ITask;
 
 }

@@ -1,15 +1,28 @@
 <app-header-component></app-header-component>
 
 <main>
-    <ul id="users">
-        <li *ngFor="let user of users">
+    <!-- <ul id="users"> -->
+    <!-- Legacy For loop angular -->
+    <!-- <li *ngFor="let user of userArr">
             <app-user-component 
-              [avatar]="user.avatar" 
-              [name]="user.name"
-              [id]="user.id"
+              [users]="userArr[0]" 
               (selectedUser)="onSelectUser($event)" />
-        </li>
-    </ul>
-    <app-new-task [nameValue]="selectedUser? selectedUser.name : '' "/>
-</main>
+        </li> -->
+    <!-- </ul> -->
 
+    <!-- Modern for loop in angular -->
+    <ul id="users">
+        @for(user of userArr; track user.id){
+        <li>
+            <app-user-component [users]="user" (selectedUser)="onSelectUser($event)" />
+        </li>
+        }
+    </ul>
+
+    @if (selectedUser) {
+         <app-new-tasks [userId]="selectedUser? selectedUser.id : ''"
+                [nameValue]="selectedUser? selectedUser.name : '' " />
+    } @else {
+        <p id="fallback"> Select a user to see their tasks! </p>
+    }
+</main>

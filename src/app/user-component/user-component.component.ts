@@ -3,6 +3,12 @@ import {DUMMY_USERS} from "../dummydata";
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
+interface user {
+  id:any;
+  name:string;
+  avatar:string
+}
+
 @Component({
   selector: 'app-user-component',
   standalone: true,
@@ -43,18 +49,19 @@ export class UserComponentComponent {
   */
 
 //to bind a child property into the parent component
- @Input({ required: true }) id!: string;
- @Input({ required: true }) avatar!: string;
- @Input({ required: true }) name!: string;
+//  @Input({ required: true }) id!: string;
+//  @Input({ required: true }) avatar!: string;
+//  @Input({ required: true }) name!: string;
+ @Input({required:true}) users!: user;
  @Output() selectedUser = new EventEmitter<string>();
 
   //getter method to get the Image
   get imagePath() {
-    return this.avatar;
+    return this.users.avatar;
   }
 
   onSelectUsers() {
-    this.selectedUser.emit(this.id);
+    this.selectedUser.emit(this.users.id);
   }
 
 }
